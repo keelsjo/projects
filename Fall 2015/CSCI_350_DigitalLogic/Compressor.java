@@ -125,14 +125,11 @@ public class Compressor
         return Collections.unmodifiableMap(result);
     }
 	
-	
+	/**
+	* @author James Keels
+	**/
     public static void compress(String filename) throws Exception
     {
-        // Read in all lines from the input text file that needs to
-        //   be compressed.
-        // Use Scanner.
-        // Store it all as one big String
-
         String encodedStr = "";
         Scanner input = new Scanner(new File(filename));
         String content = "";

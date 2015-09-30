@@ -28,7 +28,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception
     {
-        String relFilePath_orig = "src/csci350/input1.txt";
+        String relFilePath_orig = ""; //local path to file
         String relFilePath_compressed = relFilePath_orig + ".compressed";
         
         // TODO Auto-generated method stub
