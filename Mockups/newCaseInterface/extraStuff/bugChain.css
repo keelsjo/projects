@@ -1,0 +1,68 @@
+﻿body {
+}
+
+#addNewDiv
+{
+    padding-left:15px;
+    padding-right:15px;
+}
+
+#btnSaveBug, #btnAddNewBugDiv
+{
+    margin-right:30px;
+}
+
+.modal-xxl 
+{
+    width: 55%;
+}
+
+.float-right
+{
+    float:right;
+}
+
+.noBugs
+{
+    color:red;
+}
+
+.margin-bottom-20px
+{
+    margin-bottom:20px;
+}
+
+.margin-bottom-30px
+{
+    margin-bottom:30px;
+}
+
+.margin-left-10px
+{
+    margin-left:10px;
+}
+
+a:hover, a:focus
+{
+    text-decoration:none;
+}
+
+a, a:hover, a:focus
+{
+    color:blue;
+}
+
+.rowHeading
+{
+    width:11em;
+}
+
+.selected
+{
+    border:7px solid red;
+}
+
+.padding-left-0
+{
+    padding-left: 0;
+}

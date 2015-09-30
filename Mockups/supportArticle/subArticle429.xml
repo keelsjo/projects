@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<errorSteps429>
+  <os>
+    <name>XP, Vista, Win 7</name>
+    <subArticle>
+      <title>Register DLL's</title>
+      <ol>
+        <li>Close the Hawkes software.</li>
+        <li><![CDATA[From the Windows Start menu, browse to <strong>All Programs -> Hawkes Learning Systems -> <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="Replace With Your Software Title">Software Title</span> -> Help -> Reregister DLLs.</strong>]]></li>
+        <li>Click Next.</li>
+        <li>Select the option "Unregister, then register files (Troubleshooting)".</li>
+        <li>Click Next, Next, and Finish.</li>
+      </ol>
+      <videoSrc>./videos/big_buck_bunny.mp4</videoSrc>
+    </subArticle>
+    <subArticle>
+      <title>Register DLL's During Program Startup</title>
+      <ol>
+        <li><![CDATA[From the Windows Start menu, browse to <strong>All Programs -> Hawkes Learning Systems -> <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="Replace With Your Software Title">Software Title</span> -> Advanced Configuration.</strong>]]></li>
+        <li>At the warning prompt, click Yes.</li>
+        <li>Click on the "Startup" option on the left sidebar.</li>
+        <li>Select the “Enable DLL Registration” option.</li>
+        <li>Select the “Register DLLs per user” option.</li>
+        <li>Click Save, then Close. If prompted, update the master copy as well.</li>
+        <li><![CDATA[When you open the Hawkes software again, the DLLs will be initialized before you are prompted to enter your <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="An Access Code is a unique 30 character code that identifies you to your instructor and to the Hawkes courseware">Access Code</span>]]></li>
+        <li>Once the DLLs are successfully registered, you can repeat steps 1-6 to speed up the startup performance of the software.</li>
+      </ol>
+      <videoSrc>./videos/water.mp4</videoSrc>
+    </subArticle>
+    <subArticle>
+      <title>Reinstall Adobe Flash Player</title>
+      <ol>
+        <li><![CDATA[Download the uninstaller for Flash Player <a class="clickableLink" href="http://downloads.hawkeslearning.com/Other/AdobeFlashPlayer/Hawkes-Flash-Player-Reset.exe" target=""><strong>here</strong></a> and save it to your Desktop.]]></li>
+        <li>Exit all browsers and other programs that use Flash.</li>
+        <li>Run the uninstaller by double-clicking on the icon that was saved in Step 1 and follow the prompts.</li>
+        <li><![CDATA[Verify that the uninstallation is complete by restarting your computer and going to the <a class="clickableLink" href="http://www.adobe.com/software/flash/about/" target=""><strong>About Adobe Flash Player</strong></a> page. If this page has either a question mark, an empty box, or a message "Adobe Flash Player cannot be found", then the uninstallation is complete.]]></li>
+        <li><![CDATA[Open Internet Explorer, and go to <a class="clickableLink" href="http://get.adobe.com/flashplayer/" target="">&nbsp;<strong>http://get.adobe.com/flashplayer/</strong></a>. <strong>(This must be done from Internet Explorer; not Safari, Firefox, Google Chrome, etc.)</strong>]]></li>
+        <li>Uncheck the box next to "Yes, install Google Toolbar - optional".</li>
+        <li>Click the "Download Now" button.</li>
+        <li>When the file download dialog box appears, please click Run.</li>
+        <li>When the security warning dialog box appears, please click Run.</li>
+        <li>When the user account control dialog box appears, please click Continue or Yes.</li>
+        <li>Click "Finish" when the installer has completed.</li>
+        <li><![CDATA[To verify that Flash was installed properly, open Internet Explorer and go to the <a class="clickableLink" href="http://www.adobe.com/software/flash/about/" target=""><strong>About Adobe Flash Player</strong></a> page. If the flash video plays properly, then the reinstall was successful.]]></li>
+      </ol>
+      <videoSrc>./videos/big_buck_bunny.mp4</videoSrc>
+    </subArticle>
+    <subArticle>
+      <title>Verify User Directory</title>
+      <ol>
+        <li>Close the Hawkes software.</li>
+        <li>From the Windows Start menu, please select Documents or My Documents.</li>
+        <li function="addSupplemental">
+          <mainStep>If there is a "Hawkes Learning Systems" folder, continue to next step. If this folder does not exist, <![CDATA[<a href="javascript:void(0);" onclick="toggleSupplementModal('xp_429_vUD_createHLFolder');"><span class="label label-info">CLICK HERE</span></a>]]>.</mainStep>
+          <supplement>
+            <li><![CDATA[From the Windows Start menu, browse to <strong>All Programs -> Hawkes Learning Systems -> <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="Replace With Your Software Title">Software Title</span> -> Advanced Configuration.</strong>]]></li>
+            <li>At the warning prompt, click Yes.</li>
+            <li>Click on the "Startup" option on the left sidebar.</li>
+            <li function="getStepNumber">In the main panel, take note of the file path on line #6, "User Directory". This is the your user directory.</li>
+            <li>Click Close.</li>
+            <li>Go to the Windows Start menu and click "Computer" (or "My Computer").</li>
+            <li function="addStepNumber">Navigate to your User Directory by opening the appropriate folders in the file path from step</li>
+          </supplement>
+        </li>
+        <li>Open the Hawkes Learning Systems folder.</li>
+        <li><![CDATA[Open the <span class="label label-danger" data-toggle="tooltip" data-placement="top" title="Replace With Your Software Title">Software Title</span> folder.]]></li>
+        <li>
+          <complexStep>
+            <stepText>Verify that the following six folders are located in the user directory:</stepText>
+            <stepTable>
+              <![CDATA[
+                <div class="row">
+                  <div class="col-lg-6">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td><strong>Bookmark</strong></td>
+                          <td><strong>Config</strong></td>
+                          <td><strong>Upload</strong></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Certificates</strong></td>
+                          <td><strong>Reports</strong></td>
+                          <td><strong>WebTest</strong></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-lg-6" id="divCaution">
+                    <p class="stepCaution"><strong>****folder names are Case Sensitive****</strong></p>
+                  </div>
+                </div>
+              ]]>
+            </stepTable>
+          </complexStep>
+        </li>
+        <li>If any of the previous 6 folders were missing, create a new folder with a matching name.</li>
+      </ol>
+      <videoSrc>./videos/water.mp4</videoSrc>
+    </subArticle>
+  </os>
+  <os>
+    <name>Win 8</name>
+    
+  </os>
+  <os>
+    <name>Mac OS X</name>
+    
+  </os>
+</errorSteps429>

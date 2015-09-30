@@ -1,0 +1,613 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Calculus</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/line-chart/1.1.4/line-chart.min.js"></script>
+    <script src="./JS/FUN.js" type="text/javascript"></script>
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <style>
+        #mdOptions, #lessonList ul {
+            list-style-type: none;
+        }
+
+            #lessonList ul li hr {
+                margin-top: 15px;
+                margin-bottom: 15px;
+                border: 0;
+                border-top-width: 5px;
+                border-top-style: solid;
+                border-top-color: #eeeeee;
+            }
+
+        #mdPDFPane embed {
+            width: 95%;
+        }
+
+        #mediaInstructors p {
+            font-size: 15px;
+        }
+
+        #mediaChaptDiv, #mediaLessonDiv {
+            max-height: 600px;
+            overflow: auto;
+        }
+
+        .min-height-600p {
+            min-height: 600px;
+        }
+
+        .max-height-600p {
+            max-height: 600px;
+        }
+
+        .bar-vertical-right {
+            border-right: .5em solid;
+        }
+
+        .bar-vertical-left {
+            border-left: .5em solid;
+        }
+
+        .text-align-center {
+            text-align: center;
+        }
+
+        a.noUnderline {
+            text-decoration: none;
+        }
+
+        .width-70pct {
+            width: 70%;
+        }
+
+        .video-center {
+            margin-left: 13%;
+        }
+
+        .margin-bottom-20p {
+            margin-bottom: 20px;
+        }
+
+        .margin-bottom-50p {
+            margin-bottom: 50px;
+        }
+
+        .chapter-number {
+            font-size: 2em !important;
+            width: 45px;
+            height: 45px;
+            background-color: #0d87e9;
+            text-align: center;
+            color: white;
+        }
+
+        .chapter-desc {
+            font-size: 1em !important;
+        }
+
+        .lessonNum {
+            font-size: 1.5em;
+        }
+
+        .const-txtbox {
+            width: 40%;
+        }
+
+        .slider{
+            margin-left:20px;
+        }
+
+        .margin-bottom-10p {
+            margin-bottom: 10px;
+        }
+
+        .margin-top-5p {
+            margin-top: 5px;
+        }
+
+        /*page template*/
+        nav.navbar {
+            background: #26343d;
+        }
+
+            nav.navbar ul.nav {
+                float: right;
+                margin-top: 15px;
+            }
+
+        .noPadding {
+            padding-top: 10px !important;
+            padding-bottom: 10px !important;
+        }
+
+        .margin-top-100p {
+            margin-top: 100px;
+        }
+
+        .const-text-size {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body onload="init();">
+    <div>
+        <nav class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="fa fa-bars fa-fw"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="http://www.hawkeslearning.com/Students.htm">Students</a></li>
+                        <li><a href="http://www.hawkeslearning.com/Instructors.htm">Instructors</a></li>
+                        <li><a href="http://www.hawkeslearning.com/Products.htm">Products</a></li>
+                        <li><a href="http://support.hawkeslearning.com/supportcenter/">Support</a></li>
+                        <li><a href="http://www.hawkeslearning.com/AboutUs.htm">About Us</a></li>
+                        <li>
+                            <a class="btn btn-primary noPadding" href="http://learn.hawkeslearning.com" target="_blank"><span class="fa fa-sign-in fa-fw"></span><span>Student Login</span></a>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row margin-top-100p">
+                <ol class="breadcrumb">
+                    <li><a href="http://www.hawkeslearning.com/">Home</a></li>
+                    <li class="active">Instructors</li>
+                </ol>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div class="row">
+                        <div class="media">
+                            <div class="media-left media-middle">
+                                <img class="media-object" src="./images/Calc_ET.png" alt="">
+                                <h6 class="text-align-center"><a class="noUnderline" href="#" id="linkTakeAPeek" data-toggle="modal" data-target="#mdSneekPeek"><i class="fa fa-search fa-1x"></i>&nbsp;Take a Peek</a></h6>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading">Single Variable Calculus with Early Transcendentals</h3>
+                                <h5>P. Sisson, T. Szarvas</h5>
+                                <p>A comprehensive, mathematically rigorous exposition, Single Variable Calculus with Early Transcendentals, blends precision and depth with a conversational tone to include the reader in developing the ideas and intuition of calculus. A consistent focus on historical context, theoretical discovery, and extensive exercise sets provide insight into the many applications and inherent beauty of the subject.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div>
+                        <button class="btn btn-primary" type="button" onclick="showTabPanel('TOC');">Table of Contents</button>
+                        <button class="btn btn-primary" type="button" onclick="showTabPanel('MTA');">Meet the Authors</button>
+                        <button class="btn btn-primary" type="button" onclick="showTabPanel('FUN');">Something Fun</button>
+                    </div>
+                    <div class="jumbotron" id="jumboPanel">
+                        <div class="tabPanel" id="tabPanTOC">
+                            <div class="row">
+                                <div class="col-lg-2" id="mediaOffsetDiv"></div>
+                                <div class="col-lg-8" id="mediaChaptDiv"></div>
+                                <div class="col-lg-4" id="mediaLessonDiv">
+                                    <div id="lessonList"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabPanel" id="tabPanMTA">
+                            <div class="row margin-bottom-50p">
+                                <div class="content content-video">
+                                    <video class="video-center" width="75%" controls>
+                                        <source src="./videos/big_buck_bunny.mp4" type="video/mp4" />
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                </div>
+                            </div>
+                            <div class="row" id="mediaInstructors">
+                                <div class="media margin-bottom-20p">
+                                    <div class="media-left">
+                                        <img class="media-object" src="./images/sisson.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">Dr. Paul Sisson</h5>
+                                        <p>Paul Sisson received his bachelor’s degree in mathematics and physics from New Mexico Tech and his PhD from the University of South Carolina. Since then, he has taught a wide variety of math and computer science courses, including Intermediate Algebra, College Algebra, Calculus, Topology, Mathematical Art, History of Mathematics, Real Analysis, Mathematica Programming, and Network Operating Systems. He is currently serving as Professor of Mathematics at Louisiana State University in Shreveport.</p>
+                                    </div>
+                                </div>
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img class="media-object" src="./images/szarvas.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">Dr. Tibor Szarvas</h5>
+                                        <p>Tibor Szarvas received his master’s degree in mathematics from the University of Szeged, Hungary, and his PhD from the University of South Carolina. His teaching experience in mathematics includes courses such as Intermediate Algebra, Liberal Arts Mathematics, Mathematics for Elementary Teachers, Precalculus, Calculus, Advanced Calculus, Discrete Mathematics, Differential Equations, College Geometry, Mathematical Modeling, Linear Algebra, Abstract Algebra, Topology, Real Analysis, Complex Variables, Number Theory, and Mathematical Logic. He is currently serving as Professor and Chair of Mathematics at Louisiana State University in Shreveport.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabPanel" id="tabPanFUN">
+                            <h4 id="panelTitle">Consider:&nbsp;<span id="panelTitleFunc">f(x) = (x+A)(x+B)(x+C)+D</span></h4>
+                            <div class="row min-height-600p max-height-600p">
+                                <div class="row margin-bottom-10p text-align-center">
+                                    <div class="col-lg-3">
+                                        <div><span class="const-text-size">A:</span></div>
+                                        <div class="col-lg-6 margin-top-5p">
+                                            <input type="range" class="slider" id="constA" min="-10" max="10">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" class="const-txtbox" id="txtboxConstA">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div><span class="const-text-size">B:</span></div>
+                                        <div class="col-lg-6 margin-top-5p">
+                                            <input type="range" class="slider" id="constB" min="-10" max="10">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" class="const-txtbox" id="txtboxConstB">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div><span class="const-text-size">C:</span></div>
+                                        <div class="col-lg-6 margin-top-5p">
+                                            <input type="range" class="slider" id="constC" min="-10" max="10">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" class="const-txtbox" id="txtboxConstC">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div><span class="const-text-size">D:</span></div>
+                                        <div class="col-lg-6 margin-top-5p">
+                                            <input type="range" class="slider" id="constD" min="-10" max="10">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" class="const-txtbox" id="txtboxConstD">
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <div class="row" id="chart">
+                                    <div ng-app="example" ng-controller="ExampleCtrl">
+                                        <linechart data="data" options="options"></linechart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <!--modal-->
+    <div class="modal fade" id="mdSneekPeek" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="">
+        <div class="modal-dialog width-70pct" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <ul id="mdOptions">
+                                <li><h6><a class="noUnderline" href="#">Book Features</a></h6></li>
+                                <li><h6><a class="noUnderline" href="#">Chapter 4</a></h6></li>
+                                <li><h6><a class="noUnderline" href="#">Chapter 6</a></h6></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="row">
+                                <h3 id="mdTitle"></h3>
+                                <h4 id="mdSubTitle"></h4>
+                                <hr />
+                            </div>
+                            <div class="row">
+                                <div id="mdPDFPane"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal-->
+    <script>
+        var calcPdfArr = [
+            { name: "Book Features", link: "http://www.hawkeslearning.com/Documents/Calculus/CLC_Features_Web.pdf" },
+            { name: "Chapter 4", link: "http://www.hawkeslearning.com/Documents/Calculus/CLC_Chapter_4_Web.pdf" },
+            { name: "Chapter 6", link: "http://www.hawkeslearning.com/Documents/Calculus/CLC_Chapter_6_Web.pdf" }
+        ];
+
+        var calcTOCArr = [
+            {
+                num: "1", title: "A Function Primer", lessonArr: [
+                  { lessonNum: "1.1", lessonName: "Functions and How We Represent Them" },
+                  { lessonNum: "1.2", lessonName: "A Function Repertory" },
+                  { lessonNum: "1.3", lessonName: "Transforming and Combining Functions" },
+                  { lessonNum: "1.4", lessonName: "Inverse Functions" },
+                  { lessonNum: "1.5", lessonName: "Calculus, Calculators, and Computer Algebra Systems" }
+                ]
+            },
+            {
+                num: "2", title: "Limits and the Derivative", lessonArr: [
+                  { lessonNum: "2.1", lessonName: "Rates of Change and Tangents" },
+                  { lessonNum: "2.2", lessonName: "Limits All Around the Plane" },
+                  { lessonNum: "2.3", lessonName: "The Mathematical Definition of Limit" },
+                  { lessonNum: "2.4", lessonName: "Determining Limits of Functions" },
+                  { lessonNum: "2.5", lessonName: "Continuity" },
+                  { lessonNum: "2.6", lessonName: "Rate of Change Revisited: The Derivative" }
+                ]
+            },
+            {
+                num: "3", title: "Differentiation", lessonArr: [
+                  { lessonNum: "3.1", lessonName: "Differentiation Notation and Consequences" },
+                  { lessonNum: "3.2", lessonName: "Derivatives of Polynomials, Exponentials, Products, and Quotients" },
+                  { lessonNum: "3.3", lessonName: "Derivatives of Trigonometric Functions" },
+                  { lessonNum: "3.4", lessonName: "The Chain Rule" },
+                  { lessonNum: "3.5", lessonName: "Implicit Differentiation" },
+                  { lessonNum: "3.6", lessonName: "Derivatives of Inverse Functions" },
+                  { lessonNum: "3.7", lessonName: "Rates of Change in Use" },
+                  { lessonNum: "3.8", lessonName: "Related Rates" },
+                  { lessonNum: "3.9", lessonName: "Linearization and Differentials" }
+                ]
+            },
+            {
+                num: "4", title: "Applications of Differentiation", lessonArr: [
+                  { lessonNum: "4.1", lessonName: "Extreme Values of Functions" },
+                  { lessonNum: "4.2", lessonName: "The Mean Value Theorem" },
+                  { lessonNum: "4.3", lessonName: "The First and Second Derivative Tests" },
+                  { lessonNum: "4.4", lessonName: "L’Hôpital’s Rule" },
+                  { lessonNum: "4.5", lessonName: "Calculus and Curve Sketching" },
+                  { lessonNum: "4.6", lessonName: "Optimization Problems" },
+                  { lessonNum: "4.7", lessonName: "Antiderivatives" }
+                ]
+            },
+            {
+                num: "5", title: "Integration", lessonArr: [
+                  { lessonNum: "5.1", lessonName: "Area, Distance, and Riemann Sums" },
+                  { lessonNum: "5.2", lessonName: "The Definite Integral" },
+                  { lessonNum: "5.3", lessonName: "The Fundamental Theorem of Calculus" },
+                  { lessonNum: "5.4", lessonName: "Indefinite Integrals and the Substitution Rule" },
+                  { lessonNum: "5.5", lessonName: "The Substitution Rule and Definite Integration" }
+                ]
+            },
+            {
+                num: "6", title: "Applications of the Definite Integral", lessonArr: [
+                  { lessonNum: "6.1", lessonName: "Finding Volumes Using Slices" },
+                  { lessonNum: "6.2", lessonName: "Finding Volumes Using Cylindrical Shells" },
+                  { lessonNum: "6.3", lessonName: "Arc Length and Surface Area" },
+                  { lessonNum: "6.4", lessonName: "Moments and Centers of Mass" },
+                  { lessonNum: "6.5", lessonName: "Force, Work, and Pressure" },
+                  { lessonNum: "6.6", lessonName: "Hyperbolic Functions" }
+                ]
+            },
+            { num: "7", title: "Techniques of Integration", lessonArr: [{ lessonNum: "0", lessonName: "Null" }, { lessonNum: "0", lessonName: "Null" }] },
+            { num: "8", title: "Differential Equations", lessonArr: [{ lessonNum: "0", lessonName: "Null" }, { lessonNum: "0", lessonName: "Null" }] },
+            { num: "9", title: "Parametric Equations & Polar Coordinates", lessonArr: [{ lessonNum: "0", lessonName: "Null" }, { lessonNum: "0", lessonName: "Null" }] },
+            { num: "10", title: "Sequences and Series", lessonArr: [{ lessonNum: "0", lessonName: "Null" }, { lessonNum: "0", lessonName: "Null" }] },
+            { num: "11", title: "Vectors and the Geometry of Space", lessonArr: [{ lessonNum: "0", lessonName: "Null" }, { lessonNum: "0", lessonName: "Null" }] },
+            { num: "12", title: "Verctor Functions", lessonArr: [{ lessonNum: "0", lessonName: "Null" }, { lessonNum: "0", lessonName: "Null" }] },
+            { num: "13", title: "Partial Derivatives", lessonArr: [{ lessonNum: "0", lessonName: "Null" }, { lessonNum: "0", lessonName: "Null" }] },
+            { num: "14", title: "Multiple Integrals", lessonArr: [{ lessonNum: "0", lessonName: "Null" }, { lessonNum: "0", lessonName: "Null" }] },
+            { num: "15", title: "Vector Calculus", lessonArr: [{ lessonNum: "0", lessonName: "Null" }, { lessonNum: "0", lessonName: "Null" }] },
+            {
+                num: "A", title: "Appendices", lessonArr: [
+                  { lessonNum: "A", lessonName: "Fundamentals of Mathematica" },
+                  { lessonNum: "B", lessonName: "Properties of Exponents and Logarithms, Graphs of Exponential and Logarithmic Functions" },
+                  { lessonNum: "C", lessonName: "Trigonometric and Hyperbolic Functions" },
+                  { lessonNum: "D", lessonName: "Complex Numbers" },
+                  { lessonNum: "E", lessonName: "Proofs of Selected Theorems" },
+                ]
+            }
+        ];
+
+        function init() {
+            $('.tabPanel').hide();
+            $('#tabPanTOC').show();
+            addEventListeners();
+            addTOC();
+        }
+
+        function addEventListeners() {
+            $('#linkTakeAPeek').click(function () {
+                displayPDF("init");
+            });
+
+            $('#mdOptions li').click(function () { displayPDF($(this).text()); });
+        }
+
+        function displayPDF(key) {
+            if (key == 'init') {
+                displayPDF($('#mdOptions').children('li').first().text());
+            }
+            else {
+                link = getLinkFromJSONArray(key);
+                $('#mdTitle').html('<strong>Single Variable Calculus w/ Early Transcendentals</strong>');
+                $('#mdSubTitle').html(key);
+                $('#mdPDFPane').html('<embed type="application/pdf" src="' + link + '" />');
+                $('#mdPDFPane embed').css('height', $(window).height() * 0.7);
+            }
+        }
+
+        function addTOC() {
+            if (calcTOCArr.length > 8) {
+                var htmlStr_1 = '';
+                var htmlStr_2 = '';
+
+                $('#mediaChaptDiv').html('<div class="col-lg-6">' +
+                                            '<div id="mediaChaptList_1"><ul class="media-list"></ul></div>' +
+                                         '</div>' +
+                                         '<div class="col-lg-6">' +
+                                            '<div id="mediaChaptList_2"><ul class="media-list"></ul></div>' +
+                                         '</div>');
+
+                for (var i = 0; i < calcTOCArr.length; i++) {
+                    if (i < 8) {
+                        htmlStr_1 += '<li class="media">' +
+                                        '<a class="noUnderline" href="#' + calcTOCArr[i].num + '" id="hlink' + calcTOCArr[i].num + '" onclick="showLessons(this)">' +
+                                            '<div class="media-left">' +
+                                                '<p class="chapter-number">' + calcTOCArr[i].num + '</p>' +
+                                            '</div>' +
+                                            '<div class="media-body">' +
+                                                '<h5 class="media-heading">' + calcTOCArr[i].title + '</h5>' +
+                                            '</div>' +
+                                        '</a>' +
+                                    '</li>';
+                    }
+                    else {
+                        htmlStr_2 += '<li class="media">' +
+                                        '<a class="noUnderline" href="#' + calcTOCArr[i].num + '" id="hlink' + calcTOCArr[i].num + '" onclick="showLessons(this)">' +
+                                            '<div class="media-left">' +
+                                                 '<p class="chapter-number">' + calcTOCArr[i].num + '</p>' +
+                                            '</div>' +
+                                            '<div class="media-body">' +
+                                                '<h5 class="media-heading">' + calcTOCArr[i].title + '</h5>' +
+                                            '</div>' +
+                                        '</a>' +
+                                    '</li>';
+                    }
+
+                }
+                $('#mediaChaptList_1 .media-list').html(htmlStr_1);
+                $('#mediaChaptList_2 .media-list').html(htmlStr_2);
+            }
+            else {
+                var htmlStr = '';
+
+                $('#mediaChaptDiv').html('<div class="col-lg-12">' +
+                                            '<div id="mediaChaptList_1"><ul class="media-list"></ul></div>' +
+                                         '</div>');
+
+                for (var i = 0; i < calcTOCArr.length; i++) {
+                    htmlStr += '<li class="media">' +
+                                    '<a class="noUnderline" href="#' + calcTOCArr[i].num + '" id="hlink' + calcTOCArr[i].num + '" onclick="showLessons(this)">' +
+                                        '<div class="media-left">' +
+                                              '<p class="chapter-number">' + calcTOCArr[i].num + '</p>' +
+                                        '</div>' +
+                                        '<div class="media-body">' +
+                                            '<h5 class="media-heading">' + calcTOCArr[i].title + '</h5>' +
+                                        '</div>' +
+                                    '</a>' +
+                                '</li>';
+                }
+                $('#mediaChaptList_1 .media-list').html(htmlStr);
+            }
+        }
+
+        function showLessons(key) {
+            var htmlStr = '';
+
+            key = $(key).attr('href').replace('#', '');
+            for (var i = 0; i < calcTOCArr.length; i++) {
+                if (calcTOCArr[i].num.toString() == key) {
+                    htmlStr += '<ul>';
+                    var len = calcTOCArr[i].lessonArr.length;
+
+                    for (var j = 0; j < len; j++) {
+                        if (j != (len - 1)) {
+                            htmlStr += '<li><span class="lessonNum">' + calcTOCArr[i].lessonArr[j].lessonNum + '</span><br /><span class="lessonName">' + calcTOCArr[i].lessonArr[j].lessonName + '</span><hr /></li>';
+                        }
+                        else {
+                            htmlStr += '<li><span class="lessonNum">' + calcTOCArr[i].lessonArr[j].lessonNum + '</span><br /><span class="lessonName">' + calcTOCArr[i].lessonArr[j].lessonName + '</span></li>';
+                        }
+                    }
+                    htmlStr += '</ul>';
+                    break;
+                }
+            }
+            $('#mediaOffsetDiv').hide('slow', function () { $('#mediaLessonDiv').show(); });
+            $('#lessonList').html(htmlStr);
+
+            if ($('#mediaChaptDiv').height() >= $('#mediaLessonDiv').height()) {
+                $('#mediaLessonDiv').removeClass('bar-vertical-left');
+                $('#mediaChaptDiv').addClass('bar-vertical-right');
+            }
+            else {
+                $('#mediaChaptDiv').removeClass('bar-vertical-right');
+                $('#mediaLessonDiv').addClass('bar-vertical-left');
+            }
+        }
+
+        function getLinkFromJSONArray(key) {
+            var result;
+
+            for (var i = 0; i < calcPdfArr.length; i++) {
+                if (calcPdfArr[i].name == key) {
+                    result = calcPdfArr[i].link;
+                    break;
+                }
+            }
+            return result;
+        }
+
+        function showTabPanel(key) {
+            $('.tabPanel').hide();
+            $('#jumboPanel').show();
+
+            switch (key) {
+                case 'TOC':
+                    var getSize = tryGetClass($('#mediaChaptDiv').attr('class'), 'col-');
+
+                    $('#mediaChaptDiv').removeClass('bar-vertical-right');
+                    $('#mediaLessonDiv').removeClass('bar-vertical-left');
+                    $('#mediaOffsetDiv').show();
+                    $('#mediaLessonDiv').hide();
+                    //getSize = getSize == "-1" ? getSize : "lg"
+                    //$('#mediaChaptDiv').addClass('col-' + getSize + '-offset-2');
+                    break;
+                case 'FUN':
+                    $('.slider').each(function () {
+                        var idSubStr = $(this).attr('id');
+                        idSubStr = idSubStr.charAt(0).toUpperCase() + idSubStr.substring(1);
+
+                        $("#txtbox" + idSubStr).val($(this).val());
+                    });
+
+                    $('.slider').change(function () {
+                        var idSubStr = $(this).attr('id');
+                        idSubStr = idSubStr.charAt(0).toUpperCase() + idSubStr.substring(1);
+
+                        $("#txtbox" + idSubStr).val($(this).val());
+                        redraw();
+                    });
+                    break;
+            }
+
+            $('#tabPan' + key).show();
+        }
+
+        function tryGetClass(classSpacedList, snippetStr) {
+            var result = "-1";
+            var classColl = toClassArray(classSpacedList);
+            var len = classColl.length;
+
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    if (classColl[i].indexOf(snippetStr) > -1) {
+                        result = classColl[i].split("-")[1];
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
+
+        function toClassArray(classStr) {
+            var resultArr = [];
+
+            if (classStr.indexOf(' ') != 0) {
+                resultArr = classStr.split(' ');
+            }
+            else {
+                resultArr.push(classStr);
+            }
+
+            return resultArr;
+        }
+    </script>  
+</body>
+</html>

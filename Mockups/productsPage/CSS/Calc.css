@@ -1,0 +1,18 @@
+﻿body {
+}
+
+.container {
+    width: 600px;
+    height: 300px;
+}
+.margin-top-50p {
+    margin-top: 50px;
+}
+
+.width-27p {
+    width: 27px;
+}
+
+.text-align-center {
+    text-align: center;
+}

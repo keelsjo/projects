@@ -1,0 +1,601 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Support Center - Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!--themes-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.3.2/flatly/bootstrap.min.css" title="theme_light" />
+    <!--end themes-->
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <style>
+        #iconHL
+        {
+            width:48px;
+            margin-top:-35px;
+        }
+        #mainSearchForm
+        {
+            height:45px;
+        }
+        #searchFooter
+        {
+            background-color:transparent;
+        }
+        #oSLabel
+        {
+            float:right;
+            margin-top:10px;
+            font-size:20px;
+        }
+        #contentPanel
+        {
+            width:75%;
+            margin-left:auto;
+            margin-right:auto;
+        }
+		#contentPanel-title
+		{
+			margin-top:0;
+			margin-bottom:0;
+			color:inherit;
+		}
+		#divCaution
+		{
+			right:40px;
+		}
+		#instruct_chooseOS p
+		{
+			display:inline-block;
+			margin-bottom:0;
+		}
+        #btnViewOption
+        {
+            margin-left:3em;
+            margin-bottom:12px;
+        }
+        #contentPanel
+        {
+            margin-bottom:100px;
+        }
+        .btnTryNext
+        {
+            margin-bottom:5px;
+        }
+        .spnTryNextTxt
+        {
+            margin-right:10px;
+            font-style:oblique;
+            color:red;
+        }
+        .float-right 
+        {
+            float: right;
+        }
+        .margin-top-8px 
+        {
+            margin-top: 8px;
+        }
+        .margin-top-15px 
+        {
+            margin-top: 15px;
+        }
+        .margin-bottom-2em
+        {
+            margin-bottom:2em;
+        }
+        .margin-bottom-n25px
+        {
+            margin-bottom:-25px;
+        }
+        .display-inline-block
+        {
+            display:inline-block;
+        }
+        .indent
+        {
+            margin-left:2em;
+        }
+        .divBrand
+        {
+            margin-top:-10px;
+        }
+        .margin-left-50pc
+        {
+            margin-left:50%;
+        }
+        .ta-center
+        {
+            text-align:center;
+        }
+        .font-size-2em
+        {
+            font-size:2em;
+        }
+        .top-10px
+        {
+            top:10px;
+        }
+        .font-size-small
+        {
+            font-size:small;
+        }
+        .padding-left-20px
+        {
+            padding-left:20px;
+        }
+        .list-group-item 
+        {
+            display: list-item;
+        }
+        .list-noborder
+        {
+            border:none;
+        }
+        .margin-left-50px
+        {
+            margin-left:50px;
+        }
+		.clickableLink
+		{
+			color:#a94442;
+			font-weight:700;
+		}
+		.stepCaution
+		{
+			color:#f39c12;
+			margin-top:27px;
+		}
+		.stepInfo
+		{
+			color:#3498db;
+		}
+
+        .margin-left-n15p
+        {
+            margin-left:-15px;
+        }
+		
+    </style>
+</head>
+<body onload="init();">
+    <div id="top">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navLinks">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <div class="divBrand">
+                            <img class="display-inline-block" id="iconHL" src="./logo.png" alt="Hawkes Learning">
+                            <div class="display-inline-block">
+                                <div class="row">
+                                    <span class="col-lg-12">Hawkes</span>
+                                </div>
+                                <div class="row">
+                                    <span class="col-lg-12 indent">Learning</span>
+                                </div>
+                            </div>
+                        </div>                        
+                    </a>                    
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right" id="navLinks">
+                    <ul class="nav navbar-nav">
+                        <li id="navOptStudents" onclick="setToActive(this)"><a href="#students">Students</a></li>
+                        <li id="navOptOnInstructors" onclick="setToActive(this)"><a href="#instructors">Instructors</a></li>
+                        <li class="active" id="navOptSupport" onclick="setToActive(this)"><a href="#429">Support</a></li>
+                        <li id="navOptCourses" onclick="setToActive(this)"><a href="#courses">Courses</a></li>
+                        <li id="navOptContact" onclick="setToActive(this)"><a href="#contact">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <button type="submit" class="btn btn-default margin-top-8px"><i class="fa fa-sign-in"></i>&nbsp;Login</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="mid">
+        <div class="container">
+            <div id="breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="http://apachedev.quantsystems.com/supportcenter/index.php?/">Home</a></li>
+                    <li><a href="http://apachedev.quantsystems.com/supportcenter/index.php?/category/8/0/10/Common-Errors-and-their-Solutions/">Common Errors</a></li>
+                    <li class="active">Error 429</li>
+                </ol>
+            </div>
+            <div id="search">
+                <div class="panel-group" id="searchAccordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">                        
+                        <div id="searchCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="seachFooter">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4 col-lg-offset-2">
+                                        <div class="form-group">
+                                            <label for="ddSearchWhere" class="col-lg-6 control-label margin-left-n15p">Where to Search</label>
+                                            <select class ="form-control" id="ddSearchWhere">
+                                                <option>All</option>
+                                                <option>Articles</option>
+                                                <option>Comments</option>
+                                                <option>Attachements</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label for="ddLastUpdated" class="col-lg-6 control-label margin-left-n15p">Last Updated</label>
+                                            <select class="form-control" id="ddLastUpdated">
+                                                <option>Anytime</option>
+                                                <option>Today</option>
+                                                <option>Yesterday</option>
+                                                <option>Last 7 Days</option>
+                                                <option>Last 30 Days</option>
+                                                <option>Last Month</option>
+                                                <option>Custom</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-lg-offset-3">
+                                        <div class="form-group">
+                                            <label for="selectCategories" class="col-lg-6 control-label margin-left-n15p">Categories</label>
+                                            <select class="form-control" id="selectCategories" size="10" multiple="">
+                                                <option>All Categories</option>
+                                                <optgroup label="Assigments">
+                                                    <option>All Assigments</option>
+                                                    <option>Learn</option>
+                                                    <option>Practice</option>
+                                                    <option>Certify</option>
+                                                    <option>Tests</option>
+                                                    <option>Course Materials</option>
+                                                </optgroup>
+                                                <optgroup label="Error Messages">
+                                                    <option>All Errors</option>
+                                                    <option>Installed Platform</option>
+                                                    <option>Web Platform</option>
+                                                </optgroup>
+                                                <optgroup label="Account Creation">
+                                                    <option>All Account Creation</option>
+                                                    <option>Purchasing</option>
+                                                    <option>Create Web Platform</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                        <input type="checkbox" id="chbxSubcategories" />
+                                        <span>Search in Subcategories</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer" role="tab" id="searchFooter">
+                            <form action="http://apachedev.quantsystems.com/supportcenter/index.php?/search" id="mainSearchForm" method="post" name="search">
+                                <div class="col-lg-12">
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button" data-toggle="collapse" data-parent="#searchAccordion" href="#searchCollapse" aria-expanded="true" aria-controls="searchCollapse">Advanced Search</button>
+                                        </span>
+                                        <input class="form-control" type="text" id="search-input" name="searchText" value="" placeholder="Question?" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="submit">GO!</button> 
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                <div class="panel panel-info" id="contentPanel">                    
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-10">
+                                <h3 id="contentPanel-title">Error 429</h3>
+                            </div>
+                            <div class="col-lg-2">
+                                <div id="oSLabel">
+                                    <div class="label label-success" id="lblOS"></div>
+								</div>
+                            </div>
+                        </div>
+                        <span class="font-size-small">Reference Number:&nbsp;<strong>AA-00262</strong></span>
+                        <span class="font-size-small padding-left-20px">Last Updated:&nbsp;<strong>2014-01-20 18:52</strong></span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row oSSelect ta-center">
+                            <h3 id="osSelectTitle">Which Are You Using?</h3>
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="col-lg-4">
+                                    <div class="well" id="btnOSX" onclick="toggleArticleByOS(this.id, 0)">
+                                        <div class="row"><i class="fa fa-apple fa-2x"></i></div>
+                                        <h5 class="margin-top-15px">Mac OS X</h5>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="well" id="btnXPVistaW7" onclick="toggleArticleByOS(this.id, 0)">
+                                        <div class="row"><i class="fa fa-windows fa-2x"></i></div>
+                                        <h5 class="margin-top-15px">XP, Vista, Win 7</h5>
+                                    </div>                                        
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="well" id="btnW8" onclick="toggleArticleByOS(this.id, 0)">
+                                        <div class="row"><i class="fa fa-windows fa-2x"></i></div>
+                                        <h5 class="margin-top-15px">Win 8</h5>
+                                    </div>                                        
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="oSContent" id="contentFlashCard">
+                            <div>
+                                <h3 class="display-inline-block" id="contentTitle"></h3>
+                                <button class="btn btn-warning btn-xs" type="button" id="btnViewOption" onclick="viewToggle(this.id);"></button>
+                            </div>                            
+                            <ol class="col-lg-12 content content-text" id="contentSteps"></ol>
+                            <div class="content content-video" id="contentVideo"></div>	  
+                            <div class="stillNotWorking">
+                                <span class="float-right" id="spnStillNotWorking"><span class="spnTryNextTxt">Still Not Working?</span><button class="btn btn-info btn-sm btnTryNext" type="button" onclick="toggleArticleByOS(null, $('#nextStepIdx').text())">Try Next Step</button></span>
+                            </div>
+                        </div>
+                        <div class="contactInfo" id="contactFlashCard">
+                            <div>
+                                <h3 class="display-inline-block" id="contentTitle">Contact Us...</h3>
+                            </div>
+                            <div class="contact_phone">
+                                <h4>Phone: (843) 571-2825 or (800) 426-9538</h4>
+                                <p>Technical Support Hours: Monday - Friday 8:30am until 10:00pm Eastern Standard Time</p>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="contact_chat">
+                                <h4>24-Hour Online Chat:</h4>
+                                <img src="//cdn.livechatinc.com/s3/5206491/0/button/online/90ca5428ef3b3ce96b6fd1271da7cdf5.png" alt="LiveChat" />
+                            </div>
+                            <br />
+                            <br />
+                            <div class="contact_email">
+                                <h4>Email:</h4>
+                                <button class="btn btn-primary" id="btnEmailLink" type="button" data-toggle="modal" data-target="#emailModal">Email Hawkes Learning</button>
+                            </div>                            
+                            <div class="stillNotWorking">
+                                <span class="float-right" id="spnStillNotWorking"><button class="btn btn-info btn-sm" type="button" onclick="toggleArticleByOS(null, 0)">Start Over</button></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                           
+        </div>
+    </div>
+    <div id="bottom">
+        <nav class="navbar navbar-default navbar-fixed-bottom"></nav>
+        <span id="nextStepIdx" style="display:none"></span>
+    </div>
+    <!--email modal-->
+    <div class="modal" id="emailModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Email Hawkes</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Email form for <a href="http://www.hawkeslearning.com/Support/SupportRequest.aspx">Email Link</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end email Modal-->
+    <!--supplimentary Steps modal-->
+    <div class="modal" id="suppModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="toggleSupplementModal();" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Additional Steps</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="toggleSupplementModal();">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end supplimentary Steps Modal-->
+    <script>
+        var data = getXMLData("./subArticle429.xml");
+
+        function getXMLData(file)
+        {
+            $.ajax({
+                type: "GET",
+                url: file,
+                dataType: "xml",
+                success: function (xml) {
+                    data = $(xml).children();
+                }
+            });
+        }
+
+        function init() {
+            positionContainer();
+            $('.oSContent').hide();
+            $('.contactInfo').hide();
+            $('#lblOS').hide();
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+        }
+        
+        function positionContainer() {
+            var containerOffSet = 50;
+            var navbarHeight = parseInt($('#top').find('nav.navbar-fixed-top').height());
+            $('#mid').find('div.container').css('margin-top', (navbarHeight + containerOffSet + 'px'));
+        }
+
+        function toggleArticleByOS(btnOSId, stepIdx)
+        {
+            var oSName;
+            
+            if (btnOSId == null)
+            {
+                oSName = $('#lblOS').text();
+            }
+            else
+            {
+                switch(btnOSId)
+                {
+                    case "btnOSX":
+                        oSName = "Mac OS X";
+                        break;
+                    case "btnXPVistaW7":
+                        oSName = "XP, Vista, Win 7";
+                        break;
+                    case "btn8":
+                        oSName = "Win 8";
+                        break;
+                }
+            }
+
+            buildCard(oSName, stepIdx);
+            btnViewToggle();
+            $('#lblOS').text(oSName);            
+            $('.oSSelect').hide();
+            $('#lblOS').show();
+            if (stepIdx == 0)
+            {
+                $('.oSContent').show();
+            }
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        }
+
+        function btnViewToggle(optionIdx)
+        {
+            var btnText;
+            var htmlStr_fa_icon;
+            var viewOptionText;
+            var classToRemove = "";
+            var classToAdd = "";
+            optionIdx = optionIdx == undefined ? 0 : optionIdx;
+
+            switch(optionIdx)
+            {
+                case 0:
+                    htmlStr_fa_icon = "fa fa-video-camera";
+                    viewOptionText = "Watch Video";
+                    classToAdd = "view-text";
+                    classToRemove = "view-video";
+                    break;
+                case 1:
+                    htmlStr_fa_icon = "fa fa-file-text";
+                    viewOptionText = "Read Steps";
+                    classToAdd = "view-video";
+                    classToRemove = "view-text";
+                    break;
+            }
+            btnText = '<i class="' + htmlStr_fa_icon + '"></i>&nbsp' + viewOptionText;
+            $('#btnViewOption').removeClass(classToRemove).addClass(classToAdd);
+            $('#btnViewOption').html(btnText);
+        }
+
+        function viewToggle(btnId)
+        {
+            var textClass = "view-text";
+            var videoClass = "view-video";
+            var changeToView = $('#' + btnId).hasClass(textClass) ? 1 : 0;
+
+            $('.content').toggle();
+            btnViewToggle(changeToView);
+        }
+
+        function buildCard(strOS, intIndex)
+        {            
+            var oSElementColl = $(data).find('os');
+            var oSElement;
+            var subArticleColl;
+            var subArticleElement;
+            intIndex = parseInt(intIndex);
+
+            for (var i = 0; i < oSElementColl.length; i++)
+            {
+                if ($(oSElementColl[i]).find('name').text() == strOS)
+                {
+                    oSElement = oSElementColl[i];
+                    break;
+                }
+            }
+            
+            subArticleColl = $(oSElement).find('subArticle');
+
+            if (intIndex <= subArticleColl.length - 1)
+            {
+                $('#contentFlashCard').show();
+                $('#contactFlashCard').hide();
+                subArticleElement = $(oSElement).find('subArticle')[intIndex];
+                $('#contentTitle').text($(subArticleElement).find('title').text());
+                $('#contentSteps').html(getLIElements(subArticleElement));
+                $('#contentVideo').html(
+                    '<video width="75%" controls>' +
+                        '<source src="' + $(subArticleElement).find('videoSrc').text() + '" type="video/mp4" />' +
+                        'Your browser does not support HTML5 video.' +
+                    '</video>'
+                    );
+                $('#nextStepIdx').text(intIndex + 1);
+                $('#contentVideo').hide();
+            }
+            else
+            {
+                $('.oSContent').hide();
+                $('.contactInfo').show();
+            }
+        }
+
+        function getLIElements(xmlElement)
+        {
+            var htmlStr = '';
+
+            $(xmlElement).find('li').each(function () {
+                if (this.attributes["function"] && (this.attributes["function"].value == "addSupplemental"))
+                {
+                    var liColl = $(this).find('li');
+                    var suppHtmlStr = '';
+
+                    htmlStr += '<li class="list-group-item list-noborder margin-left-50px"><p>' + $(this).find("mainStep").text() + '</p></li>';
+                    $(liColl).each(function () {
+                        suppHtmlStr += '<li class="list-group-item list-noborder margin-left-50px"><p>' + $(this).text() + '</p></li>';
+                    });
+                    $('#suppModal .modal-body').html(suppHtmlStr);
+                }
+                else
+                {
+                    htmlStr += '<li class="list-group-item list-noborder margin-left-50px"><p>' + $(this).text() + '</p></li>';
+                }
+                
+            });
+
+            return htmlStr;
+        }
+
+        function toggleSupplementModal(key)
+        {
+            $('#suppModal').toggle();
+        }
+    </script>
+</body>
+</html>
+
+
